@@ -34,12 +34,12 @@ function App() {
   // console.log(currentSale);
   function showProducts() {
     const aux = inputFilter.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    const filter = filteredProducts.filter(
-      (item) =>
-        item.name
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "") === aux.toLocaleLowerCase()
+    const filter = filteredProducts.filter((item) =>
+      item.name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .match(aux.toLocaleLowerCase())
     );
     setFilteredProducts(filter);
   }
