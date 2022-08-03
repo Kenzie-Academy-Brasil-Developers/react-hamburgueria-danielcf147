@@ -27,7 +27,12 @@ const Products = ({ item, currentSale, setCurrentSale }) => {
             Adicionar
           </button>
         ) : (
-          <button className="btn-card-text">Adicionar</button>
+          <button
+            className="btn-card-text"
+            onClick={() => alert("Não é possivel adicionar produto duplicado.")}
+          >
+            Adicionar
+          </button>
         )}
       </div>
     </div>
