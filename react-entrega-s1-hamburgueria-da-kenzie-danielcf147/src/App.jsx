@@ -34,6 +34,7 @@ function App() {
   // console.log(currentSale);
   function showProducts() {
     const aux = inputFilter.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    let filter2 = [];
     const filter = filteredProducts.filter((item) =>
       item.name
         .toLowerCase()
@@ -41,7 +42,16 @@ function App() {
         .replace(/[\u0300-\u036f]/g, "")
         .match(aux.toLocaleLowerCase())
     );
-    setFilteredProducts(filter);
+    filter.length !== 0
+      ? setFilteredProducts(filter)
+      : (filter2 = filteredProducts.filter((item) =>
+          item.category
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .match(aux.toLocaleLowerCase())
+        ));
+    setFilteredProducts(filter2);
   }
 
   return (
@@ -93,7 +103,9 @@ function App() {
               <div className="cart-total">
                 <div className="total-box">
                   <p>Total</p>
-                  <p className="total-value">R${Math.round(totalValue)}</p>
+                  <p className="total-value">
+                    R${parseFloat(totalValue.toFixed(4))}
+                  </p>
                 </div>
                 <button
                   className="remove-btn"
