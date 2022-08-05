@@ -81,7 +81,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 68%;
+  width: 60%;
   height: 100%;
   padding-left: 50px;
   margin-top: 40px;
@@ -322,6 +322,9 @@
 }
 
 @media (max-width: 1025px) {
+  .container-left {
+    width: 67%;
+  }
   .container-img {
     width: 150px;
     height: 150px;
@@ -334,6 +337,9 @@
   }
 }
 @media (max-width: 769px) {
+  .container-left {
+    width: 68%;
+  }
   .container-img {
     width: 150px;
     height: 150px;

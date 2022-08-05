@@ -33,27 +33,26 @@ function App() {
   // },[currentSale])
   // console.log(currentSale);
   function showProducts() {
-    const aux = inputFilter.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    let filter2 = [];
-    const filter = filteredProducts.filter((item) =>
-      item.name
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .match(aux.toLocaleLowerCase())
-    );
-    filter.length !== 0
-      ? setFilteredProducts(filter)
-      : (filter2 = filteredProducts.filter((item) =>
-          item.category
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .match(aux.toLocaleLowerCase())
-        ));
-    setFilteredProducts(filter2);
-  }
+    const aux = inputFilter
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
 
+    const filter = filteredProducts.filter(
+      (item) =>
+        item.name
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(aux) ||
+        item.category
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(aux)
+    );
+    setFilteredProducts(filter);
+  }
   return (
     <div className="outter-container">
       <div className="header">
